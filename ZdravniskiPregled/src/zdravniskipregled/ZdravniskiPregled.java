@@ -7,7 +7,7 @@ package zdravniskipregled;
 
 /**
  *
- * @author //UNo KO nImAš POjmA kk to DeluJe
+ * @author Aljaz
  */
 public class ZdravniskiPregled {
 
