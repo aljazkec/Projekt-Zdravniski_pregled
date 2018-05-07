@@ -26,14 +26,14 @@ public class LoginPanel extends javax.swing.JFrame {
 
       
       public LoginPanel() {
-          //  this.setUndecorated(true);
-          //  this.setAlwaysOnTop(true);
-          //  this.setResizable(false);
-          //  this.setVisible(true);
-          //  Toolkit tk =Toolkit.getDefaultToolkit();
-          //  int xsize=(int) tk.getScreenSize().getWidth();
-           // int ysize=(int) tk.getScreenSize().getHeight();
-           // this.setSize(xsize,ysize);
+            this.setUndecorated(true);
+            this.setAlwaysOnTop(true);
+            this.setResizable(false);
+            this.setVisible(true);
+            Toolkit tk =Toolkit.getDefaultToolkit();
+            int xsize=(int) tk.getScreenSize().getWidth();
+            int ysize=(int) tk.getScreenSize().getHeight();
+            this.setSize(xsize,ysize);
             
             initComponents();
           
@@ -361,7 +361,10 @@ public class LoginPanel extends javax.swing.JFrame {
                     System.out.println(rs.getBoolean(1));
                     if(rs.getBoolean(1)){
                         this.setVisible(false);
-                        new MainPanel().setVisible(true);
+                        new MainPanel(prijava_ime.getText()).setVisible(true);
+                    }
+                    else{
+                        System.out.println("Napačno uporabniško ime ali geslo");
                     }
                     
                 }
@@ -383,8 +386,8 @@ public class LoginPanel extends javax.swing.JFrame {
            
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT ime FROM public.\"Kraji\"")){
-                while (rs.next()) {                    
+                ResultSet rs = stmt.executeQuery("SELECT ime FROM public.kraji")){
+                while (rs.next()) {  
                 jComboBox1.addItem(rs.getString(1));
                 }
                 
@@ -422,8 +425,8 @@ public class LoginPanel extends javax.swing.JFrame {
     
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT ime FROM public.\"Kraji\"")){
-                while (rs.next()) {                    
+                ResultSet rs = stmt.executeQuery("SELECT ime FROM public.kraji")){
+                while (rs.next()) {                        
                 jComboBox1.addItem(rs.getString(1));
                 }
                 
