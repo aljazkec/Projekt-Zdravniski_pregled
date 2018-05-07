@@ -181,6 +181,7 @@
         <Property name="label" type="java.lang.String" value="Izhod"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="button1MouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
       </Events>
     </Component>
@@ -219,7 +220,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="list1" min="-2" pref="1377" max="-2" attributes="0"/>
-                  <EmptySpace pref="44" max="32767" attributes="0"/>
+                  <EmptySpace pref="52" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

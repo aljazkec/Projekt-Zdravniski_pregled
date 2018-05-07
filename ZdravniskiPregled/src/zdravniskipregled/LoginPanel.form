@@ -72,12 +72,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="136" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="prijava_ime" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
+                      <Component id="prijava_ime" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -85,6 +85,7 @@
                               <Component id="label1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Component id="prijava_geslo" alignment="0" pref="137" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
               </Group>
@@ -92,13 +93,6 @@
                   <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
                   <Component id="label2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                      <Component id="prijava_geslo1" pref="137" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -113,16 +107,11 @@
                   <Component id="prijava_ime" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="label2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="prijava_geslo" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
-                      <Component id="prijava_geslo1" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace pref="247" max="32767" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -162,7 +151,7 @@
             <Property name="text" type="java.lang.String" value="PRIJAVA"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="prijava_geslo1">
+        <Component class="javax.swing.JPasswordField" name="prijava_geslo">
         </Component>
       </SubComponents>
     </Container>
@@ -190,33 +179,29 @@
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="122" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                          <Component id="Registracija_ime" min="-2" pref="137" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jComboBox1" min="-2" pref="137" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                          <Component id="label5" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="Registracija_geslo" max="32767" attributes="0"/>
-                                          <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="registracija_ime" alignment="1" min="-2" pref="137" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="label3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="Registracija_upor_ime" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jComboBox1" min="-2" pref="137" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                  <Component id="Registracija_ime1" min="-2" pref="137" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Component id="label5" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="registracija_geslo" alignment="1" min="-2" pref="137" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="label3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -232,7 +217,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="Registracija_priimek" min="-2" pref="137" max="-2" attributes="0"/>
+                          <Component id="Registracija_ime2" min="-2" pref="137" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -254,7 +239,7 @@
                           <Component id="label4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Registracija_upor_ime" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="Registracija_ime" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                               <Component id="jComboBox1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -262,21 +247,19 @@
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="label3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                          <Component id="registracija_ime" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="Registracija_ime1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="registracija_geslo" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="label6" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="label5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Registracija_geslo" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="Registracija_ime2" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="label5" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Registracija_priimek" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace pref="124" max="32767" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="46" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -294,14 +277,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="registracija_ime">
+        <Component class="javax.swing.JTextField" name="registracija_geslo">
           <Properties>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Text Cursor"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registracija_imeActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registracija_gesloActionPerformed"/>
           </Events>
         </Component>
         <Component class="java.awt.Label" name="label3">
@@ -310,9 +293,9 @@
             <Property name="text" type="java.lang.String" value="Ime"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Registracija_upor_ime">
+        <Component class="javax.swing.JTextField" name="Registracija_ime">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Registracija_upor_imeActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Registracija_imeActionPerformed"/>
           </Events>
         </Component>
         <Component class="java.awt.Label" name="label4">
@@ -335,9 +318,14 @@
             <Property name="text" type="java.lang.String" value="Geslo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Registracija_priimek">
+        <Component class="javax.swing.JTextField" name="Registracija_ime1">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Registracija_priimekActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Registracija_ime1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Registracija_ime2">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Registracija_ime2ActionPerformed"/>
           </Events>
         </Component>
         <Component class="java.awt.Label" name="label6">
@@ -365,8 +353,6 @@
             <Property name="text" type="java.lang.String" value="Uporabnisko Ime"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="Registracija_geslo">
-        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JButton" name="jButton3">
@@ -375,6 +361,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

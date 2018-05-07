@@ -101,6 +101,11 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         button1.setLabel("Izhod");
+        button1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button1MouseClicked(evt);
+            }
+        });
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button1ActionPerformed(evt);
@@ -146,7 +151,7 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 1377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jTextField1.setText("jTextField1");
@@ -306,8 +311,7 @@ public class MainPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-        setVisible(false); //you can't see me!
-dispose(); //Destroy the JFrame object
+        System.exit(0);
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
@@ -356,6 +360,10 @@ dispose(); //Destroy the JFrame object
     private void list1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_list1ActionPerformed
+
+    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_button1MouseClicked
 
     /**
      * @param args the command line arguments
