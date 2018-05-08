@@ -95,6 +95,7 @@ public class MainPanel extends javax.swing.JFrame {
         jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1366, 768));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -127,7 +128,12 @@ public class MainPanel extends javax.swing.JFrame {
 
         textField1.setText("textField1");
 
-        list1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        list1.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        list1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                list1MouseClicked(evt);
+            }
+        });
         list1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 list1ActionPerformed(evt);
@@ -156,8 +162,8 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jTextField1.setText("jTextField1");
@@ -284,12 +290,12 @@ public class MainPanel extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(list4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +306,7 @@ public class MainPanel extends javax.swing.JFrame {
                                             .addComponent(jLabel7)
                                             .addComponent(jLabel8)
                                             .addComponent(jLabel4))
-                                        .addGap(51, 51, 51)
+                                        .addGap(36, 36, 36)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,11 +410,13 @@ public class MainPanel extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT ime FROM public.kraji")){
+                ResultSet rs = stmt.executeQuery("SELECT getPacienti();")){
                 while (rs.next()) {    
                 list1.addItem(rs.getString(1));
-                jComboBox1.addItem(rs.getString(1));
+               
+            //    jComboBox1.addItem(rs.getString(1));
                 }
+                
                 
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -434,6 +442,14 @@ public class MainPanel extends javax.swing.JFrame {
     private void list4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_list4ActionPerformed
+
+    private void list1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_list1MouseClicked
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_list1MouseClicked
 
     /**
      * @param args the command line arguments
