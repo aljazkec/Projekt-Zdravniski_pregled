@@ -23,7 +23,10 @@ public class LoginPanel extends javax.swing.JFrame {
       public final String user = "zolnarpi";
       public final String password = "-sg3utZne9Xo4vDE8DXZox1d84KNhHra";
                String temp = "INSERT INTO Uporabniki(kraj_id,ime,priimek,datum_rojstva,email,user_name,geslo,status,telefon)";
-
+       public final String testtesttest;        
+      public final String asd;     
+      public final String dsa;     
+      public final String asdds;     
       
       public LoginPanel() {
            this.setUndecorated(true);
