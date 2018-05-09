@@ -6,6 +6,15 @@
 package zdravniskipregled;
 
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import java.sql.*;
 
 /**
  *
@@ -13,19 +22,27 @@ import java.awt.Toolkit;
  */
 public class UporabnikiPanel extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UporabnikiPanel
-     */
+     public final String url = "jdbc:postgresql://horton.elephantsql.com:5432/zolnarpi";
+      public final String user = "zolnarpi";
+      public final String password = "-sg3utZne9Xo4vDE8DXZox1d84KNhHra";
+     String[] tab = new String[10];
+    
+     String username;
     public UporabnikiPanel() {
+       
         this.setUndecorated(true);
         this.setAlwaysOnTop(true);
         this.setResizable(false);
         this.setVisible(true);
+
         initComponents();
+        
         Toolkit tk = Toolkit.getDefaultToolkit();
         int xsize = (int) tk.getScreenSize().getWidth();
         int ysize = (int) tk.getScreenSize().getHeight();
         this.setSize(xsize,ysize);
+        
+       
     }
 
     /**
@@ -37,25 +54,479 @@ public class UporabnikiPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        uporabnikIme = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        uporabnikPriimek = new javax.swing.JTextField();
+        uporabnikEmail = new javax.swing.JTextField();
+        uporabnikTelefon = new javax.swing.JTextField();
+        uporabnikDrzava = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        uporabnikKraj = new javax.swing.JComboBox<>();
+        uporabnikDatumRojstva = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        list1 = new java.awt.List();
+        jButton4 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        uporabnikGeslo = new javax.swing.JTextField();
+        uporabnikUporabniskoIme = new javax.swing.JTextField();
+        uporabnikStatus = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        uporabnikIme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uporabnikImeActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Ime:");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Priimek:");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Datum rojstva: ");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Email: ");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Država: ");
+
+        uporabnikPriimek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uporabnikPriimekActionPerformed(evt);
+            }
+        });
+
+        uporabnikEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uporabnikEmailActionPerformed(evt);
+            }
+        });
+
+        uporabnikTelefon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uporabnikTelefonActionPerformed(evt);
+            }
+        });
+
+        uporabnikDrzava.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        uporabnikDrzava.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uporabnikDrzavaActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Telefon:");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Kraj: ");
+
+        uporabnikKraj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uporabnikKrajActionPerformed(evt);
+            }
+        });
+
+        uporabnikDatumRojstva.setText("jTextField1");
+        uporabnikDatumRojstva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uporabnikDatumRojstvaActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Posodobi");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Briši");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Uporabnikovi podatki in možnosti");
+
+        jInternalFrame1.setTitle("Seznam pacientov");
+        jInternalFrame1.setToolTipText("Seznam pacientov");
+        jInternalFrame1.setName(""); // NOI18N
+        jInternalFrame1.setVisible(true);
+
+        list1.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        list1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                list1MouseClicked(evt);
+            }
+        });
+        list1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                list1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(list1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jButton4.setText("X");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("Uporabniško Ime:");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("Geslo:");
+
+        uporabnikGeslo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uporabnikGesloActionPerformed(evt);
+            }
+        });
+
+        uporabnikUporabniskoIme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uporabnikUporabniskoImeActionPerformed(evt);
+            }
+        });
+
+        uporabnikStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uporabnikStatusActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("Status:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel9))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(uporabnikGeslo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(uporabnikUporabniskoIme, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(uporabnikIme)
+                                    .addComponent(uporabnikPriimek, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel5)
+                                                .addComponent(jLabel6)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel8))
+                                            .addGap(46, 46, 46))
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(jLabel11))
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(uporabnikStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(uporabnikDatumRojstva, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(uporabnikTelefon)
+                                        .addComponent(uporabnikEmail)
+                                        .addComponent(uporabnikDrzava, javax.swing.GroupLayout.Alignment.TRAILING, 0, 194, Short.MAX_VALUE)
+                                        .addComponent(uporabnikKraj, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(uporabnikIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(uporabnikPriimek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(uporabnikUporabniskoIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(uporabnikGeslo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(uporabnikEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(uporabnikTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(uporabnikDrzava, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(uporabnikKraj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(uporabnikDatumRojstva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(uporabnikStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton1))))
+                .addContainerGap(464, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void uporabnikImeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uporabnikImeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uporabnikImeActionPerformed
+
+    private void uporabnikPriimekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uporabnikPriimekActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uporabnikPriimekActionPerformed
+
+    private void uporabnikEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uporabnikEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uporabnikEmailActionPerformed
+
+    private void uporabnikTelefonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uporabnikTelefonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uporabnikTelefonActionPerformed
+
+    private void uporabnikDrzavaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uporabnikDrzavaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uporabnikDrzavaActionPerformed
+
+    private void uporabnikKrajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uporabnikKrajActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uporabnikKrajActionPerformed
+
+    private void uporabnikDatumRojstvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uporabnikDatumRojstvaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uporabnikDatumRojstvaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try (Connection conn = this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM UpdateUporabnikiPodatki('"+tab[5]+"','"+tab[0]+"','"+tab[1]+"','"+tab[6]+"','"+tab[2]+"','"+tab[7]+"','"+ tab[8] + "','" + tab[9] + "','" + tab[3] + "','" + uporabnikKraj.getSelectedItem() + "','" + uporabnikIme.getText() + "','" + uporabnikPriimek.getText() + "','" + uporabnikDatumRojstva.getText() + "','" + uporabnikEmail.getText() + "','" + uporabnikUporabniskoIme.getText() + "','" + uporabnikGeslo.getText() + "','" + uporabnikStatus.getText() + "','" + uporabnikTelefon.getText() +"');")){
+            VnesiUporabnike();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try (Connection conn = this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM DeleteUporabnik('"+tab[0]+"','"+tab[1]+"','"+tab[6]+"','"+tab[3]+"','"+tab[2]+"','"+tab[5]+"');")){
+            VnesiUporabnike();  
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void list1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_list1MouseClicked
+        ClearTextBoxes();       
+
+        String ime = list1.getSelectedItem().split(" ")[0];
+        String priimek = list1.getSelectedItem().substring(list1.getSelectedItem().indexOf(" ")+1);
+        uporabnikIme.setText(ime);
+        uporabnikPriimek.setText(priimek);
+        try (Connection conn = this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM getUporabnikiPodatki('"+ime+"','"+priimek+"');")){
+            while (rs.next()) {
+                uporabnikEmail.setText(rs.getString("email_uporabnika"));
+                //jTextField5.setText(rs.getDate("datum_rojstva"));
+                uporabnikTelefon.setText(rs.getString("telefon_uporabnika"));
+                uporabnikDrzava.setSelectedItem(rs.getString("drzava_ime"));
+                uporabnikKraj.setSelectedItem(rs.getString("kraj_ime"));
+                uporabnikGeslo.setText(rs.getString("geslo_uporabnika"));
+                uporabnikStatus.setText(rs.getString("status_uporabnika"));
+                uporabnikUporabniskoIme.setText(rs.getString("user_name_uporabnika"));
+                uporabnikDatumRojstva.setText("2018-01-01");
+                //shranjevanje starih vrednosti
+                tab[0]= uporabnikIme.getText(); //ime 0,1,6,3,2,5
+                tab[1]= uporabnikPriimek.getText(); //priimek
+                tab[2]= uporabnikEmail.getText(); //email
+                tab[3]= uporabnikTelefon.getText(); //telefon
+                tab[4]= uporabnikDrzava.getSelectedItem().toString(); //drzava
+                tab[5]= uporabnikKraj.getSelectedItem().toString(); //Kraj
+                tab[6]=uporabnikDatumRojstva.getText(); //datum
+                tab[7]=uporabnikUporabniskoIme.getText(); //User Name
+                tab[8]=uporabnikGeslo.getText(); //Geslo
+                tab[9]=uporabnikStatus.getText(); //Status
+            }
+               /*System.out.println("PODATKI" +tab[0] + " " + tab[1] + " " + tab[2] + " " + tab[3] + " " + tab[4] + " " + tab[5] + " " + tab[6]);*/
+
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }//GEN-LAST:event_list1MouseClicked
+
+    private void list1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_list1ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        VnesiUporabnike();
+        
+         try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM getDrzave();")){
+                while (rs.next()) {    
+                uporabnikDrzava.addItem(rs.getString("imeDrzave"));
+                }
+                uporabnikDrzava.setSelectedIndex(0);
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+              }
+       try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM getKraji('"+ uporabnikDrzava.getSelectedItem()+"');")){
+                while (rs.next()) {    
+                uporabnikKraj.addItem(rs.getString("ime_kraja"));
+                }
+                uporabnikKraj.setSelectedIndex(0);
+                
+               
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+              }
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void uporabnikGesloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uporabnikGesloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uporabnikGesloActionPerformed
+
+    private void uporabnikUporabniskoImeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uporabnikUporabniskoImeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uporabnikUporabniskoImeActionPerformed
+
+    private void uporabnikStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uporabnikStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uporabnikStatusActionPerformed
+    
+    public void ClearTextBoxes(){
+        uporabnikDatumRojstva.setText(" ");
+        uporabnikEmail.setText(" ");
+        uporabnikIme.setText(" ");
+        uporabnikPriimek.setText(" ");
+        uporabnikTelefon.setText(" ");
+    }
+    public void VnesiUporabnike(){
+        ClearTextBoxes();
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM getUporabniki()")){
+                while (rs.next()) {    
+                list1.addItem(rs.getString("uporabnikovoIme")+ " "+rs.getString("uporabnikovoIme"));
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+              }
+    }
+    public Connection connect() throws SQLException {
+            Connection conn = null;
+            conn = DriverManager.getConnection(url, user, password);
+            System.out.println("Connected to the PostgreSQL server successfully.");
+
+            return conn;
+        }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -89,5 +560,31 @@ public class UporabnikiPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private java.awt.List list1;
+    private javax.swing.JTextField uporabnikDatumRojstva;
+    private javax.swing.JComboBox<String> uporabnikDrzava;
+    private javax.swing.JTextField uporabnikEmail;
+    private javax.swing.JTextField uporabnikGeslo;
+    private javax.swing.JTextField uporabnikIme;
+    private javax.swing.JComboBox<String> uporabnikKraj;
+    private javax.swing.JTextField uporabnikPriimek;
+    private javax.swing.JTextField uporabnikStatus;
+    private javax.swing.JTextField uporabnikTelefon;
+    private javax.swing.JTextField uporabnikUporabniskoIme;
     // End of variables declaration//GEN-END:variables
 }
