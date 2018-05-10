@@ -173,7 +173,7 @@ public class MainPanel extends javax.swing.JFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(list1, javax.swing.GroupLayout.DEFAULT_SIZE, 2086, Short.MAX_VALUE)
+                .addComponent(list1, javax.swing.GroupLayout.DEFAULT_SIZE, 2090, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -267,6 +267,11 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel9.setText("Naroči pacienta na pregled");
 
         jButton4.setText("Opravi pregled");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -682,7 +687,7 @@ public class MainPanel extends javax.swing.JFrame {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM getNarocilniceDanasnje('"+username+"','"+datum+"');")){
                 while (rs.next()) {    
-                list9.addItem(rs.getString("datum")+ " "+rs.getString("ime")+" "+rs.getString("priimek"));
+                list7.addItem(rs.getString("datum")+ " "+rs.getString("ime")+" "+rs.getString("priimek"));
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -878,6 +883,11 @@ public class MainPanel extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+       //
+       //
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
